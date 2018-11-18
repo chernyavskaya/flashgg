@@ -43,7 +43,7 @@ namespace flashgg {
         string systLabel_;
 
         double minLeadPhoPt_, minSubleadPhoPt_;
-        bool scalingPtCuts_, doPhotonId_, doMVAFlattening_,doCategorization_;
+        bool scalingPtCuts_, doPhotonId_, doMVAFlattening_, doCategorization_;
         double photonIDCut_;
         double vetoConeSize_;         
         unsigned int doSigmaMDecorr_;
@@ -59,13 +59,13 @@ namespace flashgg {
         vector<double>mjjBoundaries_;
         vector<double>mjjBoundariesLower_;
         vector<double>mjjBoundariesUpper_;
-
         std::string bTagType_;
         bool       useJetID_;
         string     JetIDLevel_;        
 
         flashgg::MVAComputer<DoubleHTag> mvaComputer_;
         vector<double> mvaBoundaries_, mxBoundaries_;
+        int multiclassSignalIdx_;
 
         edm::FileInPath MVAFlatteningFileName_;
         TFile * MVAFlatteningFile_;
@@ -92,6 +92,7 @@ namespace flashgg {
         mxBoundaries_ = iConfig.getParameter<vector<double > >( "MXBoundaries" );
         mjjBoundariesLower_ = iConfig.getParameter<vector<double > >( "MJJBoundariesLower" ); 
         mjjBoundariesUpper_ = iConfig.getParameter<vector<double > >( "MJJBoundariesUpper" ); 
+        multiclassSignalIdx_ = (iConfig.getParameter<edm::ParameterSet>("MVAConfig")).getParameter<int>("multiclassSignalIdx"); 
 
         auto jetTags = iConfig.getParameter<std::vector<edm::InputTag> > ( "JetTags" ); 
         for( auto & tag : jetTags ) { jetTokens_.push_back( consumes<edm::View<flashgg::Jet> >( tag ) ); }
@@ -102,9 +103,9 @@ namespace flashgg {
         photonIDCut_ = iConfig.getParameter<double>("PhotonIDCut");
         
         doMVAFlattening_ = iConfig.getParameter<bool>("doMVAFlattening"); 
-        doCategorization_ = iConfig.getParameter<bool>("doCategorization");
+        doCategorization_ = iConfig.getParameter<bool>("doCategorization"); 
         photonElectronVeto_=iConfig.getUntrackedParameter<std::vector<int > >("PhotonElectronVeto");
-        
+        //needed for HHbbgg MVA
         if(doMVAFlattening_){
             MVAFlatteningFileName_=iConfig.getUntrackedParameter<edm::FileInPath>("MVAFlatteningFileName");
             MVAFlatteningFile_ = new TFile((MVAFlatteningFileName_.fullPath()).c_str(),"READ");
@@ -125,12 +126,15 @@ namespace flashgg {
             } else {
                 throw cms::Exception( "Configuration" ) << "The file "<<sigmaMDecorrFile_.fullPath()<<" provided for sigmaM/M decorrelation does not contain the expected histograms."<<std::endl;
             }
-
-
         }
 
+        //needed for ttH MVA
+//        METToken_( consumes<View<flashgg::Met> >( iConfig.getParameter<InputTag> ( "METTag" ) ) );
+//        electronToken_ = consumes<edm::View<flashgg::Electron> >( iConfig.getParameter<edm::InputTag> ( "ElectronTag" ) );
+//        muonToken_ = consumes<edm::View<flashgg::Muon> >( iConfig.getParameter<edm::InputTag>( "MuonTag" ) );
 
-        // SigmaMpTTag
+
+
         produces<vector<DoubleHTag> >();
         produces<vector<TagTruthBase> >();
     }
@@ -139,9 +143,8 @@ namespace flashgg {
     {
         //// should return 0 if mva above all the numbers, 1 if below the first, ..., boundaries.size()-N if below the Nth, ...
         //this is for mva, then you have mx
-        //FIXME dummy test
-        if (!doCategorization_) { 
-            return 0;
+        if (!doCategorization_) {
+             return 0;
         }
         int mvaCat=-1;
         for( int n = 0 ; n < ( int )mvaBoundaries_.size() ; n++ ) {
@@ -168,7 +171,7 @@ namespace flashgg {
         int cat=-1;
         cat = mvaCat*mxBoundaries_.size()+mxCat;
 
-        //the schema is like this:(different from HHbbgg_ETH)
+        //the schema is like this: (different from HHbbgg_ETH)
         //            "cat0 := MXbin0 * MVAcat0",   #High MX, High MVA
         //            "cat1 := MXbin1 * MVAcat0",   #High but lower MX , High MVA
         //            "cat2 := MXbin2 * MVAcat0",
@@ -237,7 +240,8 @@ namespace flashgg {
             
             // find vertex associated to diphoton object
             size_t vtx = (size_t)dipho->jetCollectionIndex();
-            //            if( vtx >= jetTokens_.size() ) { vtx = 0; }
+           // size_t vtx = (size_t)dipho->vertexIndex();
+          //  if( vtx >= jetTokens_.size() ) { vtx = 0; }
             // and read corresponding jet collection
             edm::Handle<edm::View<flashgg::Jet> > jets;
             evt.getByToken( jetTokens_[vtx], jets);
@@ -276,9 +280,8 @@ namespace flashgg {
                     }
                 }
             }
-            
-            if (!hasDijet) continue;   
-
+            if (!hasDijet) continue;             
+ 
             auto & leadJet = jet1; 
             auto & subleadJet = jet2; 
 
@@ -297,12 +300,14 @@ namespace flashgg {
             }
             
             // eval MVA discriminant
-            double mva = mvaComputer_(tag_obj);
+            std::vector<float> mva_vector = mvaComputer_.predict_prob(tag_obj);
+            double mva = mva_vector[multiclassSignalIdx_];
             if(doMVAFlattening_){
                 mva = MVAFlatteningCumulative_->Eval(mva);
             }
 
             tag_obj.setMVA( mva );
+            //tag_obj.setMVAprob( mva_vector );
             
             // choose category and propagate weights
             int catnum = chooseCategory( tag_obj.MVA(), tag_obj.MX() );
@@ -313,7 +318,7 @@ namespace flashgg {
 
             if (catnum>-1){
                 if (doCategorization_) {
-                    if (tag_obj.dijet().mass()<mjjBoundariesLower_[catnum] || tag_obj.dijet().mass()>mjjBoundariesUpper_[catnum]) continue;
+                   if (tag_obj.dijet().mass()<mjjBoundariesLower_[catnum] || tag_obj.dijet().mass()>mjjBoundariesUpper_[catnum]) continue;
                 }
                 tags->push_back( tag_obj );
                 // link mc-truth
@@ -335,4 +340,4 @@ DEFINE_FWK_MODULE( FlashggDoubleHTagProducer );
 // tab-width:4
 // c-basic-offset:4
 // End:
-// vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+// vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4 

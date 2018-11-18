@@ -43,7 +43,7 @@
 #include "flashgg/DataFormats/interface/ZPlusJetTag.h"
 #include "flashgg/DataFormats/interface/TagCandidate.h"
 #include "flashgg/DataFormats/interface/TagAndProbeCandidate.h" //spigazzi
-#include "flashgg/DataFormats/interface/DoubleHTag.h" //micheli
+#include "flashgg/DataFormats/interface/DoubleHTag.h"
 
 #include <vector>
 #include <map>
@@ -206,13 +206,13 @@ namespace  {
         std::vector<flashgg::TTHLeptonicTag> vec_tthl;
         edm::Wrapper<std::vector<flashgg::TTHLeptonicTag> > wrp_vec_tthl;
 
-        flashgg::TTHDiLeptonTag tthd;
-        std::vector<flashgg::TTHDiLeptonTag> vec_tthd;
-        edm::Wrapper<std::vector<flashgg::TTHDiLeptonTag> > wrp_vec_tthd;
-
         flashgg::DoubleHTag hh;
         std::vector<flashgg::DoubleHTag> vec_hh;
         edm::Wrapper<std::vector<flashgg::DoubleHTag> > wrp_vec_hh;
+
+        flashgg::TTHDiLeptonTag tthd;
+        std::vector<flashgg::TTHDiLeptonTag> vec_tthd;
+        edm::Wrapper<std::vector<flashgg::TTHDiLeptonTag> > wrp_vec_tthd;
 
         edm::Ptr<reco::GenParticle> ptr_genp;
 
@@ -336,4 +336,4 @@ namespace  {
 // c-basic-offset:4
 // End:
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
-
+ 

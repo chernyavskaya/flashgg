@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "/GluGluToHHTo2B2G_node_12_13TeV-madgraph_correctedcfg/lata-RunIIFall17-3_1_0-v00-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1-a50795faeee409c56cdc488b288532ac/USER": {
         "files": [
@@ -886,3 +887,6 @@
         "vetted": true
     }
 }
+=======
+{}
+>>>>>>> Nadya_repo/hh_tag_bReg_80X94X_15_10_2018

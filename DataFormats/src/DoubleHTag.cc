@@ -95,7 +95,7 @@ float DoubleHTag::getSigmaMDecorr() const
     mass_sigma[0]=diPhoton()->mass();
     mass_sigma[1] = 0.5*sqrt((diPhoton()->leadingPhoton()->sigEOverE()*diPhoton()->leadingPhoton()->sigEOverE() + diPhoton()->subLeadingPhoton()->sigEOverE()*diPhoton()->subLeadingPhoton()->sigEOverE()));
     float sigmaMOverMDecorr=-99;
-    //splitting EBEB and !EBEB, using cuts as in preselection
+    //Splitting EBEB and !EBEB, using cuts as in preselection
     if(abs(diPhoton()->leadingPhoton()->superCluster()->eta())<1.4442 && abs(diPhoton()->subLeadingPhoton()->superCluster()->eta())<1.4442){
         sigmaMOverMDecorr = (*transfEBEB_)(mass_sigma,dummy);
     }
@@ -104,7 +104,6 @@ float DoubleHTag::getSigmaMDecorr() const
     }
     return sigmaMOverMDecorr;
 }
-
 
 float DoubleHTag::getSigmaMOverMJets() const
 {
@@ -116,7 +115,6 @@ float DoubleHTag::getSigmaMOverMJets() const
 
 }
 
-
 // Local Variables:
 // mode:c++
 // indent-tabs-mode:nil
@@ -124,4 +122,4 @@ float DoubleHTag::getSigmaMOverMJets() const
 // c-basic-offset:4
 // End:
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
-
+ 

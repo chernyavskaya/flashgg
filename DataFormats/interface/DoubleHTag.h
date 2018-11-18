@@ -24,6 +24,8 @@ namespace flashgg {
 
         void setMVA(double x) { mva_ = x; }
         double MVA() const { return mva_; }
+      //  void setMVAprob(std::vector<float> &x) const { mva_prob_ = x; }
+      //  std::vector<float> MVAprob() const { return mva_prob_; }
         void setMX(double x) { MX_ = x; }
         double MX() const { return MX_; }
         double diphotonPtOverM() const {return diPhoton()->pt()/mass(); }
@@ -42,9 +44,10 @@ namespace flashgg {
         float getSigmaMOverMJets() const;
         void  setSigmaMDecorrTransf( DecorrTransform* transfEBEB, DecorrTransform* transfNotEBEB){ transfEBEB_= transfEBEB; transfNotEBEB_=transfNotEBEB;}
         LorentzVector getdiHiggsP4() const {return p4();}
-        
+
     private:
         double mva_, MX_;
+ //       std::vector<float> mva_prob_;
         edm::Ptr<flashgg::Jet> leadJet_, subleadJet_;
         LorentzVector dijet_;
         DecorrTransform* transfEBEB_;
@@ -61,4 +64,4 @@ namespace flashgg {
 // c-basic-offset:4
 // End:
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
-
+ 
