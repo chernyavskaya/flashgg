@@ -195,4 +195,4 @@ def addGenAnalysis(customize,process,tagList):
                                  variables=genVariables##+recoVariables
                                  )
 
-    process.genp = cms.Path(process.flashggGenDiPhotonDiBJetsSequence*process.flashggTaggedGenDiphotons*process.genDiphotonDumper) 
+    process.genp = cms.Path(process.flashggGenDiPhotonDiBJetsSequence*process.flashggTaggedGenDiphotons*process.genDiphotonDumper)

@@ -21,4 +21,4 @@
 </release>
 <!-- Flags CXXFLAGS="-ggdb"/ -->
 <flags   EDM_PLUGIN="1"/>
-</library> 
+</library>

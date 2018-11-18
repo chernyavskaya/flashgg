@@ -778,4 +778,4 @@ if customize.verboseSystDump:
 #print >> processDumpFile, process.dumpPython()
 
 # call the customization
-customize(process) 
+customize(process)
