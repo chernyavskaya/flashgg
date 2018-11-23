@@ -59,7 +59,8 @@ namespace flashgg {
         vector<double>mjjBoundaries_;
         vector<double>mjjBoundariesLower_;
         vector<double>mjjBoundariesUpper_;
-        std::string bTagType_;
+	std::string bTagType_;
+        std::string bTagTypeProbb_, bTagTypeProbbb_;
         bool       useJetID_;
         string     JetIDLevel_;        
 
@@ -82,7 +83,9 @@ namespace flashgg {
         vetoConeSize_( iConfig.getParameter<double> ( "VetoConeSize" ) ),
         minJetPt_( iConfig.getParameter<double> ( "MinJetPt" ) ),
         maxJetEta_( iConfig.getParameter<double> ( "MaxJetEta" ) ),
-        bTagType_( iConfig.getUntrackedParameter<std::string>( "BTagType") ),
+        //bTagType_( iConfig.getUntrackedParameter<std::string>( "BTagType") ),
+	bTagTypeProbb_( iConfig.getUntrackedParameter<std::string>( "BTagType_probb") ),
+	bTagTypeProbbb_( iConfig.getUntrackedParameter<std::string>( "BTagType_probbb") ),
         useJetID_( iConfig.getParameter<bool>   ( "UseJetID"     ) ),
         JetIDLevel_( iConfig.getParameter<string> ( "JetIDLevel"   ) ),
         mvaComputer_( iConfig.getParameter<edm::ParameterSet>("MVAConfig") )
@@ -251,7 +254,7 @@ namespace flashgg {
             for( size_t ijet=0; ijet < jets->size(); ++ijet ) {//jets are ordered in pt
                 auto jet = jets->ptrAt(ijet);
                 if (jet->pt()<minJetPt_ || fabs(jet->eta())>maxJetEta_)continue;
-                if (jet->bDiscriminator(bTagType_)<0) continue;//FIXME threshold might not be 0?
+                if ((jet->bDiscriminator(bTagTypeProbb_) + jet->bDiscriminator(bTagTypeProbbb_))<0) continue;//FIXME threshold might not be 0?
                 if( useJetID_ ){
                     if( JetIDLevel_ == "Loose" && !jet->passesJetID  ( flashgg::Loose ) ) continue;
                     if( JetIDLevel_ == "Tight" && !jet->passesJetID  ( flashgg::Tight ) ) continue;
@@ -271,7 +274,9 @@ namespace flashgg {
                     auto jet_2 = cleaned_jets[kjet];
                     auto dijet_mass = (jet_1->p4()+jet_2->p4()).mass(); 
                     if (dijet_mass<mjjBoundaries_[0] || dijet_mass>mjjBoundaries_[1]) continue;
-                    double sumbtag = jet_1->bDiscriminator(bTagType_) + jet_2->bDiscriminator(bTagType_);
+                    double sumbtag_jet1 = jet_1->bDiscriminator(bTagTypeProbb_) + jet_1->bDiscriminator(bTagTypeProbbb_);
+		    double sumbtag_jet2	= jet_2->bDiscriminator(bTagTypeProbb_)	+ jet_2->bDiscriminator(bTagTypeProbbb_);
+                    double sumbtag = sumbtag_jet1 + sumbtag_jet2;
                     if (sumbtag > sumbtag_ref) {
                         hasDijet = true;
                         sumbtag_ref = sumbtag;
