@@ -174,6 +174,22 @@
                 "with_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root",
                 "wo_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root"
         },
+        "weightsFileCAT0" : {
+                "with_Mjj" : "flashgg/Taggers/data/HHTagger/training_30_04_2020_vbfHHbbgg_C2V0_2016.weights.xml",
+                "wo_Mjj" : "flashgg/Taggers/data/HHTagger/training_30_04_2020_vbfHHbbgg_C2V0_2016.weights.xml"
+        },
+        "MVAFlatteningFileNameCAT0" : {
+                "with_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root",
+                "wo_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root"
+        },
+        "weightsFileCAT1" : {
+                "with_Mjj" : "flashgg/Taggers/data/HHTagger/training_30_04_2020_vbfHHbbgg_C2V0_2016.weights.xml",
+                "wo_Mjj" : "flashgg/Taggers/data/HHTagger/training_30_04_2020_vbfHHbbgg_C2V0_2016.weights.xml"
+        },
+        "MVAFlatteningFileNameCAT1" : {
+                "with_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root",
+                "wo_Mjj" : "flashgg/Taggers/data/HHTagger/cumulativeTrans_30_04_2020_vbfHHbbgg_C2V0_training_2016.root"
+        },
         "MVAscalingValue" : 1.0,
         "ttHWeightfile" : "flashgg/Taggers/data/ttHKiller/Keras2017_converted_allnode.pb",
         "ttHKiller_mean" : [  3.22491144e+02,   7.22919780e+01,   1.49387571e-01,   4.94052483e-03,
