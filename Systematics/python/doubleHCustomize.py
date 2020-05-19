@@ -344,7 +344,7 @@ class DoubleHCustomize():
             #self.process.flashggVBFDoubleHTag.MVAConfig.variables.pop(0)
             self.process.flashggVBFDoubleHTag.MVAConfigCAT0.variables.pop(0)
             self.process.flashggVBFDoubleHTag.MVAConfigCAT1.variables.pop(0)
-            self.process.flashggVBFDoubleHTag.MVABoundaries = cms.vdouble(0.7,0.8) #CAT0 MX > 500, CAT1 :MX <=500
+            self.process.flashggVBFDoubleHTag.MVABoundaries = cms.vdouble(0.45,0.82) #CAT0 MX > 500, CAT1 :MX <=500
             self.process.flashggVBFDoubleHTag.MXBoundaries = cms.vdouble(0.,500.)
             self.process.flashggVBFDoubleHTag.nMX = cms.uint32(2)
             self.process.flashggVBFDoubleHTag.ttHScoreThreshold = cms.double(0.26)
