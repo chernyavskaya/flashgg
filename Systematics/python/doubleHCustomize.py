@@ -337,7 +337,7 @@ class DoubleHCustomize():
             self.process.flashggVBFDoubleHTag.ttHScoreThreshold = cms.double(0)
         elif training_type == 'wo_Mjj' :
             self.process.flashggVBFDoubleHTag.MVAConfig.variables.pop(0)
-            self.process.flashggVBFDoubleHTag.MVABoundaries = cms.vdouble(0.70)
+            self.process.flashggVBFDoubleHTag.MVABoundaries = cms.vdouble(0.65)
             self.process.flashggVBFDoubleHTag.ttHScoreThreshold = cms.double(0.26)
 
         ## customize meta conditions
