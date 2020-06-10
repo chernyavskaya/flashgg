@@ -62,7 +62,9 @@ flashggVBFDoubleHTag = cms.EDProducer("FlashggVBFDoubleHTagProducer",
                                    VBFsubleadJetPt = cms.double(30.0),
                                    MVABoundaries  = cms.vdouble(0.87), # category boundaries for MVA with Mjj
                                    MXBoundaries   = cms.vdouble(0,500), 
+                                   CosThetaBoundaries   = cms.vdouble(0.,0.6,0.,0.9), 
                                    nMX   = cms.uint32(2), # number of MX categories
+                                   nCosTheta   = cms.uint32(2), # number of cosTheta categories
                                    MJJBoundariesLower = cms.vdouble(70.0,70.0,70.0,70.0,70.0,70.0,70.0,70.0,70.0,70.0,70.0,70.0),#for each category following the convention cat0=MX0 MVA0, cat1=MX1 MVA0, cat2=MX2 MVA0....
                                    MJJBoundariesUpper = cms.vdouble(190.0,190.0,190.0,190.0,190.0,190.0,190.0,190.0,190.0,190.0,190.0,190.0),#for each category following the convention cat0=MX0 MVA0, cat1=MX1 MVA0, cat2=MX2 MVA0....
                                    MVAConfigCAT0 = cms.PSet(variables=cms.VPSet(), # variables are added below

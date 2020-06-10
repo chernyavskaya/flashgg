@@ -12,7 +12,8 @@ class DoubleHCustomize():
         self.metaConditions = metaConditions
         if customize.addVBFDoubleHTag:
             #self.tagList = [ ["VBFDoubleHTag",1], ["DoubleHTag",12] ]
-            self.tagList = [ ["VBFDoubleHTag",2], ["DoubleHTag",12] ]
+            #self.tagList = [ ["VBFDoubleHTag",2], ["DoubleHTag",12] ]
+            self.tagList = [ ["VBFDoubleHTag",4], ["DoubleHTag",12] ]
         else:
             self.tagList = [ ["DoubleHTag",12] ]
         self.customizeTagSequence()
@@ -347,6 +348,8 @@ class DoubleHCustomize():
             self.process.flashggVBFDoubleHTag.MVABoundaries = cms.vdouble(0.7,0.8) #CAT0 MX > 500, CAT1 :MX <=500
             self.process.flashggVBFDoubleHTag.MXBoundaries = cms.vdouble(0.,500.)
             self.process.flashggVBFDoubleHTag.nMX = cms.uint32(2)
+            self.process.flashggVBFDoubleHTag.CosThetaBoundaries = cms.vdouble(0.,0.6,0.,0.9)
+            self.process.flashggVBFDoubleHTag.nCosTheta = cms.uint32(2)
             self.process.flashggVBFDoubleHTag.ttHScoreThreshold = cms.double(0.26)
 
         ## customize meta conditions

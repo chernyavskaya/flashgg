@@ -44,6 +44,7 @@ namespace flashgg {
         void produce( Event &, const EventSetup & ) override;
         int chooseCategory( float mva );
         int chooseCategoryMVAMX( float mva, float mx );
+        int chooseCategoryMVATheta( float mva, float costheta );
         float EvaluateNN();
         float getGenCosThetaStar_CS(TLorentzVector h1, TLorentzVector h2);
         bool isclose(double a, double b, double rel_tol, double abs_tol);        
@@ -98,8 +99,9 @@ namespace flashgg {
         GlobalVariablesComputer globalVariablesComputer_;
         MVAComputer<VBFDoubleHTag> mvaComputerCAT0_;
         MVAComputer<VBFDoubleHTag> mvaComputerCAT1_;
-        vector<double> mvaBoundaries_, mxBoundaries_;
+        vector<double> mvaBoundaries_, mxBoundaries_, cosThetaBoundaries_;
         unsigned int nMX_;
+        unsigned int nCosTheta_;
         int multiclassSignalIdx_;
             
         //leptons selection
@@ -174,7 +176,9 @@ namespace flashgg {
         mjjBoundaries_ = iConfig.getParameter<vector<double > >( "MJJBoundaries" ); 
         mvaBoundaries_ = iConfig.getParameter<vector<double > >( "MVABoundaries" );
         mxBoundaries_ = iConfig.getParameter<vector<double > >( "MXBoundaries" );
+        cosThetaBoundaries_ = iConfig.getParameter<vector<double > >( "CosThetaBoundaries" );
         nMX_ = iConfig.getParameter<unsigned int >( "nMX" );
+        nCosTheta_ = iConfig.getParameter<unsigned int >( "nCosTheta" );
         mjjBoundariesLower_ = iConfig.getParameter<vector<double > >( "MJJBoundariesLower" ); 
         mjjBoundariesUpper_ = iConfig.getParameter<vector<double > >( "MJJBoundariesUpper" ); 
         //multiclassSignalIdx_ = (iConfig.getParameter<edm::ParameterSet>("MVAConfig")).getParameter<int>("multiclassSignalIdx"); 
@@ -322,6 +326,35 @@ namespace flashgg {
         return mvaCat;
     }
 
+    int VBFDoubleHTagProducer::chooseCategoryMVATheta( float mvavalue, float costhetavalue)
+    {
+        if (!doCategorization_) {
+            return 0;
+        }
+        int mvaCat=-1;
+        for( int n = 0 ; n < ( int )mvaBoundaries_.size() ; n++ ) {
+            if( ( double )mvavalue > mvaBoundaries_[mvaBoundaries_.size() - n - 1] ) {
+                mvaCat = n;
+                break;
+            }
+        }
+        if (mvaCat==-1) return -1;// Does not pass, object will not be produced
+        int cosCat=-1;
+        for( unsigned int n = 0 ; n < nCosTheta_ ; n++ ) {  
+            if( ( double )costhetavalue > cosThetaBoundaries_[(mvaCat+1)*nCosTheta_ - n - 1] ) {
+                cosCat = n;
+                break;
+        }
+        }
+        if (cosCat==-1) return -1;// Does not pass, object will not be produced
+
+        int cat=-1;
+        cat = mvaCat*nCosTheta_+cosCat;
+        return cat;
+
+    }
+
+//////////////////////////
 
     int VBFDoubleHTagProducer::chooseCategory( float mvavalue)
     {
@@ -929,10 +962,10 @@ namespace flashgg {
                         PL_VectorVar_.clear();
                         HLF_VectorVar_.clear();
                     }
-            
                     // choose category and propagate weights
                     //int catnum = chooseCategory( tag_obj.MVA());
-                    int catnum = chooseCategoryMVAMX( tag_obj.MVA(),tag_obj.MX());
+                    //int catnum = chooseCategoryMVAMX( tag_obj.MVA(),tag_obj.MX());
+                    int catnum = chooseCategoryMVATheta( tag_obj.MVA(),abs(tag_obj.getCosThetaStar_CS()));
                     tag_obj.setCategoryNumber( catnum );
                     tag_obj.includeWeights( *dipho );
                     //            tag_obj.includeWeights( *leadJet );
