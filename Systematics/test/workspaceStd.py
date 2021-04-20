@@ -36,6 +36,18 @@ customize.options.register('tthTagsOnly',
                            VarParsing.VarParsing.varType.bool,
                            'tthTagsOnly'
                            )
+customize.options.register('cHTagsOnly',
+                           False,
+                           VarParsing.VarParsing.multiplicity.singleton,
+                           VarParsing.VarParsing.varType.bool,
+                           'cHTagsOnly'
+                           )
+customize.options.register('docHTag',
+                           False,
+                           VarParsing.VarParsing.multiplicity.singleton,
+                           VarParsing.VarParsing.varType.bool,
+                           'docHTag'
+                           )
 customize.options.register('doubleHTagsOnly',
                            False,
                            VarParsing.VarParsing.multiplicity.singleton,
@@ -298,6 +310,12 @@ if customize.doDoubleHTag:
     minimalVariables += hhc.variablesToDump()
     systematicVariables = hhc.systematicVariables()
 
+if customize.docHTag:
+    import flashgg.Systematics.cHCustomize 
+    chc = flashgg.Systematics.cHCustomize.cHCustomize(process, customize, customize.metaConditions)
+    minimalVariables += chc.variablesToDump()
+    systematicVariables = chc.systematicVariables()
+
 process.flashggTHQLeptonicTag.processId = cms.string(str(customize.processId))
 
 print 'here we print the tag sequence after'
@@ -416,6 +434,13 @@ if customize.doubleHTagsOnly:
         variablesToUse = minimalNonSignalVariables
         variablesToUse += hhc.variablesToDumpData()
 
+if customize.cHTagsOnly:
+    variablesToUse = minimalVariables
+    if customize.processId == "Data":
+        variablesToUse = minimalNonSignalVariables
+        variablesToUse += hhc.variablesToDumpData()
+
+
 if customize.doDoubleHTag:
    systlabels,jetsystlabels,metsystlabels = hhc.customizeSystematics(systlabels,jetsystlabels,metsystlabels)
            
@@ -509,6 +534,10 @@ elif customize.doubleHTagsOnly:
     print tagList
     if customize.addVBFDoubleHTag and customize.addVBFDoubleHVariables:
         tag_only_variables["VBFDoubleHTag"] = hhc.vbfHHVariables()    
+elif customize.cHTagsOnly:
+    tagList = chc.tagList
+    print "taglist is:"
+    print tagList
 else:
     tagList=[
         ["NoTag",0],
@@ -709,6 +738,8 @@ if customize.doBJetRegression:
 if customize.doDoubleHTag:
     hhc.doubleHTagRunSequence(systlabels,jetsystlabels,phosystlabels)
   
+if customize.docHTag:
+    chc.cHTagRunSequence(systlabels,jetsystlabels,phosystlabels)
 
 if customize.doFiducial:
     if ( customize.doPdfWeights or customize.doSystematics ) and ( (customize.datasetName() and customize.datasetName().count("HToGG")) 
