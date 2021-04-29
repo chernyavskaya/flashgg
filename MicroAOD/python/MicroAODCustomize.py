@@ -142,7 +142,7 @@ class MicroAODCustomize(object):
                 self.customizeVBF(process)
             elif "thq" in customize.datasetName.lower() or "thw" in customize.datasetName.lower():
                 self.customizeTH(process)
-            elif "hh" in customize.datasetName.lower():
+            elif "hh" in customize.datasetName.lower() or "ch" in customize.datasetName.lower() :
                 self.customizeHH(process)
             else:
                 raise Exception,"processType=sig but datasetName does not contain recognized production mechanism - see MicroAODCustomize.py"

@@ -1,0 +1,321 @@
+{
+    "/cH_HToGammaGamma_NLO_MG5aMCatNLO_13TeV/nchernya-Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X-Autumn18-dae14ff740345aa37ec48c23e14f3dd3/USER": {
+        "dset_type": "mc", 
+        "files": [
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_22.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6610.830078125
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_9.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6317.7744140625
+            }, 
+            {
+                "bad": false, 
+                "events": 19000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_13.root", 
+                "nevents": 19000, 
+                "totEvents": 19000, 
+                "weights": 5922.2392578125
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_1.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6211.69921875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_10.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6188.32666015625
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_39.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6493.96728515625
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_32.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6224.2841796875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_14.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6326.763671875
+            }, 
+            {
+                "bad": false, 
+                "events": 19001, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_42.root", 
+                "nevents": 19001, 
+                "totEvents": 19001, 
+                "weights": 6020.22412109375
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_34.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6371.7109375
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_6.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6317.7744140625
+            }, 
+            {
+                "bad": false, 
+                "events": 19010, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_12.root", 
+                "nevents": 19010, 
+                "totEvents": 19010, 
+                "weights": 6073.26171875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_23.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6296.19970703125
+            }, 
+            {
+                "bad": false, 
+                "events": 19100, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_36.root", 
+                "nevents": 19100, 
+                "totEvents": 19100, 
+                "weights": 6222.486328125
+            }, 
+            {
+                "bad": false, 
+                "events": 19042, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_4.root", 
+                "nevents": 19042, 
+                "totEvents": 19042, 
+                "weights": 5974.3779296875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_26.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6454.41357421875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_40.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6375.306640625
+            }, 
+            {
+                "bad": false, 
+                "events": 19010, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_27.root", 
+                "nevents": 19010, 
+                "totEvents": 19010, 
+                "weights": 6168.5498046875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_41.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6136.18798828125
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_17.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6396.88134765625
+            }, 
+            {
+                "bad": false, 
+                "events": 19010, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_15.root", 
+                "nevents": 19010, 
+                "totEvents": 19010, 
+                "weights": 5787.39794921875
+            }, 
+            {
+                "bad": false, 
+                "events": 17513, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_33.root", 
+                "nevents": 17513, 
+                "totEvents": 17513, 
+                "weights": 5475.46435546875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_16.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6254.84814453125
+            }, 
+            {
+                "bad": false, 
+                "events": 19100, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_38.root", 
+                "nevents": 19100, 
+                "totEvents": 19100, 
+                "weights": 6058.87841796875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_11.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6373.5087890625
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_2.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6048.09130859375
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_25.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6220.6884765625
+            }, 
+            {
+                "bad": false, 
+                "events": 19010, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_21.root", 
+                "nevents": 19010, 
+                "totEvents": 19010, 
+                "weights": 6021.123046875
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_18.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6191.92236328125
+            }, 
+            {
+                "bad": false, 
+                "events": 19010, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_8.root", 
+                "nevents": 19010, 
+                "totEvents": 19010, 
+                "weights": 5931.228515625
+            }, 
+            {
+                "bad": false, 
+                "events": 19100, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_37.root", 
+                "nevents": 19100, 
+                "totEvents": 19100, 
+                "weights": 6276.4228515625
+            }, 
+            {
+                "bad": false, 
+                "events": 19638, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_29.root", 
+                "nevents": 19638, 
+                "totEvents": 19638, 
+                "weights": 6114.61328125
+            }, 
+            {
+                "bad": false, 
+                "events": 18101, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_3.root", 
+                "nevents": 18101, 
+                "totEvents": 18101, 
+                "weights": 5619.29541015625
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_28.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6492.16943359375
+            }, 
+            {
+                "bad": false, 
+                "events": 18000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_20.root", 
+                "nevents": 18000, 
+                "totEvents": 18000, 
+                "weights": 5578.8427734375
+            }, 
+            {
+                "bad": false, 
+                "events": 18427, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_5.root", 
+                "nevents": 18427, 
+                "totEvents": 18427, 
+                "weights": 5777.50927734375
+            }, 
+            {
+                "bad": false, 
+                "events": 20000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_19.root", 
+                "nevents": 20000, 
+                "totEvents": 20000, 
+                "weights": 6492.16943359375
+            }, 
+            {
+                "bad": false, 
+                "events": 3000, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_43.root", 
+                "nevents": 3000, 
+                "totEvents": 3000, 
+                "weights": 954.6779174804688
+            }, 
+            {
+                "bad": false, 
+                "events": 18200, 
+                "name": "/store/user/nchernya/CRAB_UserFiles/Era2018_test_campaign-v2-RunIIUL18iMiniAOD-106X/210427_110334/0000/myMicroAODOutputFile_35.root", 
+                "nevents": 18200, 
+                "totEvents": 18200, 
+                "weights": 5524.90625
+            }
+        ], 
+        "parent_n_units": 1000000, 
+        "vetted": true
+    }
+}

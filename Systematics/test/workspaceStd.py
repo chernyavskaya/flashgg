@@ -36,6 +36,18 @@ customize.options.register('tthTagsOnly',
                            VarParsing.VarParsing.varType.bool,
                            'tthTagsOnly'
                            )
+customize.options.register('cHTagsOnly',
+                           False,
+                           VarParsing.VarParsing.multiplicity.singleton,
+                           VarParsing.VarParsing.varType.bool,
+                           'cHTagsOnly'
+                           )
+customize.options.register('docHTag',
+                           False,
+                           VarParsing.VarParsing.multiplicity.singleton,
+                           VarParsing.VarParsing.varType.bool,
+                           'docHTag'
+                           )
 customize.options.register('doubleHTagsOnly',
                            False,
                            VarParsing.VarParsing.multiplicity.singleton,
@@ -262,6 +274,13 @@ if customize.doDoubleHTag:
     minimalVariables += hhc.variablesToDump()
     systematicVariables = hhc.systematicVariables()
 
+if customize.docHTag:
+    import flashgg.Systematics.cHCustomize 
+    chc = flashgg.Systematics.cHCustomize.cHCustomize(process, customize, customize.metaConditions)
+    minimalVariables += chc.variablesToDump()
+    systematicVariables = chc.systematicVariables()
+
+
 if customize.doStageOne:
     assert (not customize.doHTXS)
     from flashgg.Systematics.stageOneCustomize import StageOneCustomize
@@ -388,6 +407,13 @@ if customize.doubleHTagsOnly:
    # if customize.processId == "Data":
    #     variablesToUse = minimalNonSignalVariables
   
+if customize.cHTagsOnly:
+    variablesToUse = minimalVariables
+    if customize.processId == "Data":
+        variablesToUse = minimalNonSignalVariables
+        variablesToUse += hhc.variablesToDumpData()
+
+
 if customize.doDoubleHTag:
    systlabels,jetsystlabels,metsystlabels = hhc.customizeSystematics(systlabels,jetsystlabels,metsystlabels)
            
@@ -421,8 +447,10 @@ process.source = cms.Source ("PoolSource",
                                  #"/store/user/spigazzi/flashgg/Era2016_RR-17Jul2018_v2/legacyRun2FullV1/GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8/Era2016_RR-17Jul2018_v2-legacyRun2FullV1-v0-RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext2-v2/190708_140500/0000/myMicroAODOutputFile_12.root"
                                  #"/store/user/spigazzi/flashgg/Era2017_RR-31Mar2018_v2/legacyRun2FullV1/GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8/Era2017_RR-31Mar2018_v2-legacyRun2FullV1-v0-RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/190703_101705/0000/myMicroAODOutputFile_45.root"
                                  #"/store/user/spigazzi/flashgg/Era2018_RR-17Sep2018_v2/legacyRun2FullV2/GluGluHToGG_M125_TuneCP5_13TeV-amcatnloFXFX-pythia8/Era2018_RR-17Sep2018_v2-legacyRun2FullV2-v0-RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/190710_093150/0000/myMicroAODOutputFile_41.root"
-                                 "/store/user/spigazzi/flashgg/Era2018_RR-17Sep2018_v2/legacyRun2FullV2/EGamma/Era2018_RR-17Sep2018_v2-legacyRun2FullV2-v0-Run2018A-17Sep2018-v2/190610_103420/0001/myMicroAODOutputFile_1125.root"
-                             ))
+                              #   "/store/user/spigazzi/flashgg/Era2018_RR-17Sep2018_v2/legacyRun2FullV2/EGamma/Era2018_RR-17Sep2018_v2-legacyRun2FullV2-v0-Run2018A-17Sep2018-v2/190610_103420/0001/myMicroAODOutputFile_1125.root"
+                                 "file:/afs/cern.ch/work/n/nchernya/CERN/cH/CMSSW_10_6_8/src/flashgg/test_microAOD/myMicroAODOutputFile_cH.root"),
+                             duplicateCheckMode=cms.untracked.string("noDuplicateCheck") )
+#                             ))
 
 process.TFileService = cms.Service("TFileService",
                                    fileName = cms.string("test.root"))
@@ -460,6 +488,10 @@ elif customize.doubleHTagsOnly:
     print tagList
     if customize.addVBFDoubleHTag and customize.addVBFDoubleHVariables:
         tag_only_variables["VBFDoubleHTag"] = hhc.vbfHHVariables()    
+elif customize.cHTagsOnly:
+    tagList = chc.tagList
+    print "taglist is:"
+    print tagList
 elif customize.doStageOne:
     tagList = soc.tagList
 else:
@@ -542,7 +574,7 @@ for tag in tagList:
                            )
 
 # Require standard diphoton trigger
-filterHLTrigger(process, customize)
+filterHLTrigger(process, customize) 
 
 process.options = cms.untracked.PSet( wantSummary = cms.untracked.bool(True) )
 
@@ -670,6 +702,8 @@ if customize.doDoubleHTag:
     process.p.remove(process.flashggMetFilters)
     hhc.doubleHTagRunSequence(systlabels,jetsystlabels,phosystlabels)
   
+if customize.docHTag:
+    chc.cHTagRunSequence(systlabels,jetsystlabels,phosystlabels)
 
 
 if( not hasattr(process,"options") ): process.options = cms.untracked.PSet()
